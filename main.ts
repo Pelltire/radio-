@@ -1,10 +1,26 @@
-input.onButtonPressed(Button.A, function () {
-    radio.sendString("")
+radio.onReceivedNumber(function (receivedNumber) {
+    if (receivedNumber == 0) {
+        basic.showIcon(IconNames.Happy)
+        basic.pause(2000)
+        basic.clearScreen()
+    } else {
+        if (receivedNumber == 1) {
+            basic.showIcon(IconNames.Sad)
+            basic.pause(2000)
+            basic.clearScreen()
+        }
+    }
 })
-radio.onReceivedString(function (receivedString) {
+input.onButtonPressed(Button.A, function () {
+    radio.sendNumber(0)
     basic.showIcon(IconNames.Happy)
+    basic.pause(500)
+    basic.clearScreen()
+})
+input.onButtonPressed(Button.B, function () {
+    radio.sendNumber(1)
+    basic.showIcon(IconNames.Sad)
+    basic.pause(500)
+    basic.clearScreen()
 })
 radio.setGroup(1)
-basic.forever(function () {
-	
-})
